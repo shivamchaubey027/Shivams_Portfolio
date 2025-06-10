@@ -88,7 +88,7 @@ pre {
     padding: 1rem;
     border-radius: 6px;
     overflow-x: auto;
-    border-left: 3px solid #004E89;
+    border-left: 3px solid #121212;
 }
 
 blockquote {
@@ -360,7 +360,7 @@ blockquote {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 78, 137, 0.9);
+    background: rgba(18, 18, 18, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -385,7 +385,7 @@ blockquote {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #004E89;
+    color: #121212;
     transition: transform 0.2s ease;
 }
 
@@ -434,13 +434,13 @@ blockquote {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: #004E89;
+    color: #121212;
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .project-link:hover {
-    color: #003366;
+    color: #333;
 }
 
 /* Blog Sections */
@@ -482,7 +482,7 @@ blockquote {
 }
 
 .blog-title a:hover {
-    color: #004E89;
+    color: #121212;
 }
 
 .blog-excerpt {
@@ -492,7 +492,7 @@ blockquote {
 }
 
 .blog-link {
-    color: #004E89;
+    color: #121212;
     font-weight: 500;
     font-size: 0.875rem;
 }
@@ -608,7 +608,7 @@ blockquote {
 }
 
 .related-item-title a:hover {
-    color: #004E89;
+    color: #121212;
 }
 
 .related-excerpt {
@@ -640,7 +640,7 @@ blockquote {
 
 .search-input:focus {
     outline: none;
-    border-color: #004E89;
+    border-color: #121212;
 }
 
 .search-btn {
@@ -658,7 +658,7 @@ blockquote {
 }
 
 .search-btn:hover {
-    color: #004E89;
+    color: #121212;
 }
 
 .search-info {
@@ -672,7 +672,7 @@ blockquote {
 }
 
 .clear-search {
-    color: #004E89;
+    color: #121212;
     font-size: 0.875rem;
 }
 
@@ -716,7 +716,7 @@ blockquote {
 }
 
 .article-title a:hover {
-    color: #004E89;
+    color: #121212;
 }
 
 .article-excerpt {
@@ -727,7 +727,7 @@ blockquote {
 }
 
 .article-link {
-    color: #004E89;
+    color: #121212;
     font-weight: 500;
 }
 
@@ -758,8 +758,8 @@ blockquote {
 }
 
 .pagination-link:hover {
-    border-color: #004E89;
-    color: #004E89;
+    border-color: #121212;
+    color: #121212;
 }
 
 .pagination-info {
@@ -803,8 +803,8 @@ blockquote {
 
 .filter-tag:hover,
 .filter-tag.active {
-    border-color: #004E89;
-    color: #004E89;
+    border-color: #121212;
+    color: #121212;
     background-color: rgba(0, 78, 137, 0.05);
 }
 
@@ -869,7 +869,7 @@ blockquote {
 
 .skill-category h3 {
     margin-bottom: 1rem;
-    color: #004E89;
+    color: #121212;
 }
 
 .skill-category p {
@@ -922,7 +922,7 @@ blockquote {
 }
 
 .contact-section h3 {
-    color: #004E89;
+    color: #121212;
     margin-bottom: 1rem;
 }
 
@@ -934,7 +934,7 @@ blockquote {
 
 .contact-link {
     font-size: 1.125rem;
-    color: #004E89;
+    color: #121212;
     font-weight: 500;
 }
 
@@ -956,7 +956,7 @@ blockquote {
 }
 
 .social-link:hover {
-    color: #004E89;
+    color: #121212;
     text-decoration: none;
 }
 
@@ -993,7 +993,7 @@ blockquote {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #004E89;
+    border-color: #121212;
 }
 
 .form-group textarea {
