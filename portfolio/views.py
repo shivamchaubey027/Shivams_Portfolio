@@ -10,11 +10,13 @@ def get_site_settings():
     settings, created = SiteSettings.objects.get_or_create(
         pk=1,
         defaults={
-            'site_title': 'My Portfolio',
-            'tagline': 'Software Developer & Creative Technologist',
-            'bio_short': 'Welcome to my portfolio. I create innovative software solutions.',
-            'bio_long': 'I am a passionate software developer with expertise in full-stack development.',
-            'email': 'contact@example.com',
+            'site_title': 'Shivam Chaubey',
+            'tagline': 'Engineering Student & Backend Developer',
+            'bio_short': 'Self-driven engineering student with hands-on experience in backend development, data science, and full-stack prototyping. Skilled in Python, Java, and JavaScript.',
+            'bio_long': 'I am passionate about building ML-powered tools with clean UI, strong logic, and real-world impact. Currently pursuing B.E. in CSE (AI & ML) at Mumbai University.',
+            'email': 'shivamchaubey027@gmail.com',
+            'github_url': 'https://github.com/shivamchaubey',
+            'linkedin_url': 'https://linkedin.com/in/shivamchaubey',
         }
     )
     return settings
