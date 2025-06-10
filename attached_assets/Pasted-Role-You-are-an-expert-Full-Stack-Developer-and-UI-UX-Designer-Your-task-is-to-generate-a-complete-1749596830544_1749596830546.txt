@@ -1,0 +1,95 @@
+Role: You are an expert Full-Stack Developer and UI/UX Designer. Your task is to generate a complete blueprint for a personal portfolio website.
+
+Objective: Create a personal portfolio website inspired by the clean, classic, and readable aesthetic of The New York Times. The website must be easy to manage via a secret admin panel and built with a simple, beginner-friendly tech stack that is easy to deploy for free.
+
+1. Core Design Language & Style (The "NYT Feel")
+
+Typography: This is critical.
+Headlines & Titles: Use a classic, elegant Serif font. Google Fonts recommendations: 'Lora' or 'Merriweather'. These will mimic the literary feel of NYT's headlines.
+Body Text: Use a highly-readable, clean Sans-Serif font. Google Fonts recommendations: 'Inter' or 'Lato'. This ensures clarity and comfort for long-form blog posts.
+Monospaced Font (for code blocks in blogs): Use 'Source Code Pro' or 'Fira Code'.
+Color Palette:
+Primary Background: Off-white (#FDFDFD) for a softer feel than pure white.
+Primary Text: A slightly desaturated black (#121212) for readability.
+Accent Color: A single, muted, and professional accent color for links, buttons, and highlights. Suggestions: A deep navy blue (#004E89) or a sophisticated dark teal (#006A6A).
+Borders & Lines: Subtle, light gray (#EAEAEA).
+Layout & Spacing:
+Embrace generous white space. The layout should feel uncluttered and breathable.
+Use a consistent grid system (e.g., a 12-column grid).
+Maximum content width should be around 800px-900px for blog posts and main content areas to optimize for reading.
+2. Website Structure & Page-by-Page Breakdown
+
+a) Landing Page:
+
+Goal: A powerful first impression, inspired by the NYT homepage but less dense. It should be a curated summary of you.
+Layout:
+Header/Navigation Bar: Simple and clean. Links to: Projects, Blog, About, Contact. A distinct, outlined button for "Download Resume" should be present here.
+Hero Section: A full-width section with a strong, professional headline. For example: "John Doe. Software Developer & Creative Technologist." followed by a 2-3 sentence summary of who you are and what you do.
+Featured Projects Section: Display 2-3 of your best projects as cards. Each card should have a high-quality image, project title, a brief description, and tags for the technologies used.
+Latest Blogs Section: Display the 3 most recent blog posts with their titles, a short excerpt, and the publication date.
+Footer: Simple footer with links to your GitHub, LinkedIn, and Twitter/X, along with a copyright notice.
+b) Blog Page:
+
+Blog Listing Page (/blog): A clean, chronological list of all your blog posts. Each entry should show the Title, Date, and a short Excerpt. No images on this listing page to maintain a clean, text-focused look.
+Individual Blog Post Page (/blog/[slug]): This is where the NYT article-reading experience comes in.
+Single-column layout with a max-width for readability.
+Large, serif headline.
+Subtitle and "By John Doe | Published on [Date]" meta-information below the headline.
+Clean body text with perfect line spacing and font size for reading.
+Support for images, blockquotes, lists, and code blocks within the article.
+c) Projects Page:
+
+A grid-based layout of all your projects. Each project is a card with an image, title, short description, tech stack tags, and links to the "Live Site" and "Source Code" (GitHub).
+d) About Page:
+
+A more detailed biography. Tell your story.
+Could be a two-column layout: your text on one side, a professional headshot on the other.
+This page should also feature a prominent "Download My Resume" button.
+e) Contact Page:
+
+Keep it simple. Provide your professional email address.
+Include links to your professional social media profiles (LinkedIn, GitHub).
+Optionally, a simple contact form (Name, Email, Message).
+3. The "Secret" Admin Panel (CMS)
+
+This is the most crucial functional requirement. It should not be linked anywhere on the public-facing website. It should be accessed via a secret URL (e.g., /admin).
+
+Authentication: The page must be password-protected.
+Functionality: It should be a simple dashboard with options to:
+Manage Blogs:
+Create a New Blog Post.
+This must open a page with a Rich Text Editor (WYSIWYG). The editor MUST support: Bold, Italic, Underline, Strikethrough, Headings (H1, H2, H3), Blockquotes, Ordered/Unordered Lists, Hyperlinks, and the ability to embed images.
+Edit existing posts.
+Delete posts.
+Manage Projects:
+A form to add a new project (Title, Description, Image URL, Live Site URL, GitHub URL, Tech Tags).
+Edit/Delete existing projects.
+Set Featured Blogs/Projects: A simple way (e.g., a checkbox next to each item in the list) to mark which blogs/projects appear on the landing page.
+Update Resume: A simple file upload form that replaces the existing resume PDF file.
+4. Recommended Tech Stack & Deployment
+
+The goal is simplicity, ease of local development, a database, and free deployment.
+
+Recommended Technology: Python with the Django Framework.
+Why? Django's killer feature is its built-in Admin Panel. It automatically generates the exact "secret" admin interface you described for managing all your database models (blogs, projects). This saves massive amounts of development time.
+Database: Use SQLite for local development (it's a simple file, no setup needed). Use PostgreSQL for production (free tiers are available).
+Frontend: Use Django's templating engine. It's simple, powerful, and keeps everything in one project.
+Deployment:
+Host: Use PythonAnywhere. They have a generous free tier that is perfect for hosting a beginner Django application with a database. It's designed for Python and is very easy to set up.
+Alternative Host: Render also has a good free tier for Django/PostgreSQL projects.
+Alternative Tech Stack (if you prefer JavaScript):
+Framework: Next.js
+Backend/Database: Supabase. It provides a free PostgreSQL database, authentication, and auto-generated APIs, which simplifies building the backend.
+CMS: You would need to build the admin panel from scratch as a separate, secured page in Next.js and use a library like TipTap or React-Quill for the rich text editor.
+Deployment: Host the entire application on Vercel (free tier).
+Final Request for the AI:
+
+Please generate a response that includes:
+
+A confirmation of the chosen tech stack (preferably Django).
+A recommended project file structure.
+Key code snippets for:
+The Django models.py to define the Blog and Project database tables.
+The Django admin.py to register these models and automatically create the CMS.
+A basic HTML template for the blog post page, showing how to use the specified fonts and layout.
+Clear, step-by-step instructions for running the project locally and a brief guide on deploying to the recommended free service.
