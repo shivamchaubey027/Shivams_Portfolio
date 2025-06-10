@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ site_settings.site_title }} - {{ site_settings.tagline }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ site_settings.site_title }}</h1>
+            <p class="hero-subtitle">{{ site_settings.tagline }}</p>
+            <div class="hero-description">
+                <p>{{ site_settings.bio_short }}</p>
+            </div>
+            <div class="hero-actions">
+                <a href="{% url 'projects' %}" class="btn btn-primary">View My Work</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+{% if featured_projects %}
+<section class="featured-projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            {% for project in featured_projects %}
+            <article class="project-card">
+                {% if project.image %}
+                    <div class="project-image">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
+                    </div>
+                {% endif %}
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.tech_stack_list %}
+                            <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-links">
+                        {% if project.live_url %}
+                            <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                Live Site
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7 17 10-10M17 7H7v10"/>
+                                </svg>
+                            </a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                Source Code
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m7 17 10-10M17 7H7v10"/>
+                                </svg>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="section-footer">
+            <a href="{% url 'projects' %}" class="btn btn-outline">View All Projects</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Latest Blog Posts Section -->
+{% if latest_blogs %}
+<section class="latest-blogs">
+    <div class="container">
+        <h2 class="section-title">Latest Writing</h2>
+        <div class="blog-list">
+            {% for post in latest_blogs %}
+            <article class="blog-item">
+                <div class="blog-meta">
+                    <time datetime="{{ post.published_at|date:'Y-m-d' }}">
+                        {{ post.published_at|date:'F j, Y' }}
+                    </time>
+                </div>
+                <h3 class="blog-title">
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </h3>
+                <p class="blog-excerpt">{{ post.excerpt }}</p>
+                <a href="{{ post.get_absolute_url }}" class="blog-link">Read More</a>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="section-footer">
+            <a href="{% url 'blog_list' %}" class="btn btn-outline">View All Posts</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ blog_post.title }} - {{ site_settings.site_title }}{% endblock %}
+{% block meta_description %}{{ blog_post.excerpt }}{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <div class="container">
+        <!-- Article Header -->
+        <header class="article-header">
+            <div class="article-breadcrumb">
+                <a href="{% url 'blog_list' %}">Blog</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>{{ blog_post.title }}</span>
+            </div>
+            
+            <h1 class="article-title">{{ blog_post.title }}</h1>
+            
+            <div class="article-meta">
+                <div class="meta-info">
+                    <span class="meta-author">By {{ site_settings.site_title }}</span>
+                    <span class="meta-separator">|</span>
+                    <time datetime="{{ blog_post.published_at|date:'Y-m-d' }}" class="meta-date">
+                        Published on {{ blog_post.published_at|date:'F j, Y' }}
+                    </time>
+                    {% if blog_post.updated_at != blog_post.created_at %}
+                        <span class="meta-separator">|</span>
+                        <time datetime="{{ blog_post.updated_at|date:'Y-m-d' }}" class="meta-updated">
+                            Updated {{ blog_post.updated_at|date:'F j, Y' }}
+                        </time>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="article-content">
+            {{ blog_post.content|safe }}
+        </div>
+
+        <!-- Article Footer -->
+        <footer class="article-footer">
+            <div class="article-actions">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"/>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+        </footer>
+    </div>
+</article>
+
+<!-- Related Posts -->
+{% if related_posts %}
+<section class="related-posts">
+    <div class="container">
+        <h3 class="related-title">Related Articles</h3>
+        <div class="related-grid">
+            {% for post in related_posts %}
+            <article class="related-item">
+                <div class="related-meta">
+                    <time datetime="{{ post.published_at|date:'Y-m-d' }}">
+                        {{ post.published_at|date:'M j, Y' }}
+                    </time>
+                </div>
+                <h4 class="related-item-title">
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </h4>
+                <p class="related-excerpt">{{ post.excerpt|truncatewords:15 }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

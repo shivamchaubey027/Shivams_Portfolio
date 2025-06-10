@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - {{ site_settings.site_title }}{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="container">
+        <div class="about-header">
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">{{ site_settings.tagline }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="about-content">
+    <div class="container">
+        <div class="about-layout">
+            <div class="about-text">
+                <div class="bio-content">
+                    {% if site_settings.bio_long %}
+                        {{ site_settings.bio_long|safe }}
+                    {% else %}
+                        <p>{{ site_settings.bio_short }}</p>
+                        <p>I'm passionate about creating innovative solutions and sharing my knowledge through writing and open source contributions.</p>
+                    {% endif %}
+                </div>
+                
+                <div class="about-actions">
+                    <a href="{% url 'download_resume' %}" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download My Resume
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            
+            {% if site_settings.profile_image %}
+            <div class="about-image">
+                <div class="profile-image">
+                    <img src="{{ site_settings.profile_image.url }}" alt="{{ site_settings.site_title }}" loading="lazy">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills/Interests Section -->
+<section class="about-skills">
+    <div class="container">
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Technical Expertise</h3>
+                <p>I work with modern technologies to build scalable, efficient solutions. My experience spans across frontend and backend development, with a focus on user experience and performance.</p>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Design Philosophy</h3>
+                <p>I believe in clean, purposeful design that prioritizes user experience. Every project should tell a story and solve real problems through thoughtful implementation.</p>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Continuous Learning</h3>
+                <p>Technology evolves rapidly, and I'm committed to staying current with industry trends, best practices, and emerging technologies through continuous learning and experimentation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="about-cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Let's Work Together</h2>
+            <p>I'm always interested in discussing new opportunities, collaborations, or just connecting with fellow developers and creators.</p>
+            <div class="cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-primary">Contact Me</a>
+                <a href="{% url 'projects' %}" class="btn btn-outline">View My Work</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
