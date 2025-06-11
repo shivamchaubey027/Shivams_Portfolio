@@ -94,7 +94,10 @@ class Resume(models.Model):
 
 class SiteSettings(models.Model):
     """Model for site-wide settings and personal information"""
-    site_title = models.CharField(max_length=100, default="My Portfolio")
+    site_title = models.CharField(max_length=100, default="Shivam Chaubey")
+    navbar_title = models.CharField(max_length=50, default="Shivam", help_text="Text for navbar brand")
+    hero_title = models.CharField(max_length=100, default="Hi, I am Shivam", help_text="Main hero section title")
+    author_name = models.CharField(max_length=100, default="Shivam Chaubey", help_text="Author name for blog posts")
     tagline = models.CharField(max_length=200, 
                               default="Software Developer & Creative Technologist")
     bio_short = models.TextField(max_length=500, 

@@ -136,3 +136,11 @@ CKEDITOR_CONFIGS = {
         ]),
     },
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # For Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'shivamchaubey027@gmail.com'
+EMAIL_HOST_PASSWORD = 'Admin@12345'  # Use an app password, not your main password!
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

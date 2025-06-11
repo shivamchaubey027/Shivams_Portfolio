@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.core.mail import send_mail
 from .models import BlogPost, Project, Resume, SiteSettings
 
 
@@ -11,8 +12,11 @@ def get_site_settings():
         pk=1,
         defaults={
             'site_title': 'Shivam Chaubey',
-            'tagline': 'Engineering Student & Backend Developer',
-            'bio_short': 'Self-driven engineering student with hands-on experience in backend development, data science, and full-stack prototyping. Skilled in Python, Java, and JavaScript.',
+            'navbar_title': 'SC',
+            'hero_title': 'Hi, I am Shivam',
+            'author_name': 'Shivam Chaubey',
+            'tagline': 'Software & ML Developer',
+            'bio_short': 'A software developer with a passion for building intelligent systems. I have a broad skill set that spans the full stack, from creating user interfaces in React to building predictive models with Keras, all while maintaining a deep appreciation for core computer science fundamentals.',
             'bio_long': 'I am passionate about building ML-powered tools with clean UI, strong logic, and real-world impact. Currently pursuing B.E. in CSE (AI & ML) at Mumbai University.',
             'email': 'shivamchaubey027@gmail.com',
             'github_url': 'https://github.com/shivamchaubey',
@@ -118,17 +122,29 @@ def about(request):
 def contact(request):
     """Contact page"""
     site_settings = get_site_settings()
-    
-    # Handle contact form submission
     success_message = None
+    error_message = None
     if request.method == 'POST':
-        # In a real application, you would handle form submission here
-        # For now, we'll just show a success message
-        success_message = "Thank you for your message! I'll get back to you soon."
-    
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        if name and email and message:
+            try:
+                send_mail(
+                    subject=f"Contact Form Submission from {name}",
+                    message=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
+                    from_email=None,  # Uses DEFAULT_FROM_EMAIL
+                    recipient_list=[site_settings.email],
+                )
+                success_message = "Thank you for your message! I'll get back to you soon."
+            except Exception as e:
+                error_message = "There was an error sending your message. Please try again later."
+        else:
+            error_message = "Please fill in all fields."
     context = {
         'site_settings': site_settings,
         'success_message': success_message,
+        'error_message': error_message,
     }
     return render(request, 'portfolio/contact.html', context)
 

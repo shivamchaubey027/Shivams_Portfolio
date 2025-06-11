@@ -249,6 +249,7 @@ blockquote {
 /* Hero Section */
 .hero {
     padding: 4rem 0 6rem;
+    min-height: 100vh;
     background: linear-gradient(135deg, #FDFDFD 0%, #F8F9FA 100%);
 }
 
@@ -323,7 +324,7 @@ blockquote {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 3rem;
     justify-content: center;
