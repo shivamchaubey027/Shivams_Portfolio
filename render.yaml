@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: shivams-portfolio
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn portfolio_site.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio_site.settings
+      - key: PYTHON_VERSION
+        value: 3.12
+    autoDeploy: true
+    staticPublishPath: staticfiles
+    preDeployCommand: python manage.py migrate && python manage.py collectstatic --noinput
