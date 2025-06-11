@@ -11,4 +11,7 @@ services:
         value: 3.12
     autoDeploy: true
     staticPublishPath: staticfiles
+    static:
+      - source: media
+        publicPath: /media
     preDeployCommand: python manage.py migrate && python manage.py collectstatic --noinput
