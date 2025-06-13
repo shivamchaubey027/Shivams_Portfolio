@@ -1,1 +1,33 @@
+# Environment variables
+.env
+
+# Databases
 db.sqlite3
+*.sqlite3
+
+# Python generated files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django generated files
+staticfiles/
+media/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+xyz
