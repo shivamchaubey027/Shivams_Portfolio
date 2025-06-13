@@ -4,7 +4,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.core.mail import send_mail
 from .models import BlogPost, Project, Resume, SiteSettings
-
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 
 def get_site_settings():
     """Get or create site settings"""
@@ -161,3 +162,15 @@ def download_resume(request):
         return response
     except Resume.DoesNotExist:
         raise Http404("Resume not found")
+
+
+def create_superuser_view(request):
+    username = 'admin'
+    email = 'admin@example.com'
+    password = 'admin123'
+
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username, email, password)
+        return HttpResponse(f"Superuser '{username}' created successfully!")
+    else:
+        return HttpResponse(f"Superuser '{username}' already exists.")
