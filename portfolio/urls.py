@@ -9,5 +9,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('download-resume/', views.download_resume, name='download_resume'),
-    path('create-my-admin-user-now-12345/'),
+    path('create-my-admin-user-now-12345/', views.create_superuser_view, name='create_superuser'),
+
 ]
