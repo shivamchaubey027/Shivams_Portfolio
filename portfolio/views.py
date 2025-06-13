@@ -139,6 +139,8 @@ def contact(request):
                 )
                 success_message = "Thank you for your message! I'll get back to you soon."
             except Exception as e:
+                import logging
+                logging.error(f"Error sending contact form email: {e}")
                 error_message = "There was an error sending your message. Please try again later."
         else:
             error_message = "Please fill in all fields."
