@@ -31,3 +31,5 @@ env/
 Thumbs.db
 
 xyz
+portfolio/__pycache__/urls.cpython-312.pyc
+portfolio/__pycache__/views.cpython-312.pyc
