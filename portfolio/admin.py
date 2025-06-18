@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from .models import BlogPost, Project, Resume, SiteSettings
+from .models import BlogPost, Project, Resume, SiteSettings, ProjectImage
 
 
 @admin.register(BlogPost)
@@ -31,6 +31,13 @@ class BlogPostAdmin(admin.ModelAdmin):
     view_on_site_link.short_description = "View on site"
 
 
+class ProjectImageInline(admin.TabularInline):
+    model = ProjectImage
+    extra = 1
+    fields = ('image', 'caption')
+    readonly_fields = ('uploaded_at',)
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     """Admin interface for projects"""
@@ -53,6 +60,7 @@ class ProjectAdmin(admin.ModelAdmin):
             'fields': ('is_active', 'is_featured', 'order')
         }),
     )
+    inlines = [ProjectImageInline]
     
     def tech_stack_preview(self, obj):
         tech_list = obj.tech_stack_list[:3]  # Show first 3 technologies

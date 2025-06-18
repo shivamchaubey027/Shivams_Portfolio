@@ -42,13 +42,22 @@ class BlogPost(models.Model):
         return reverse('blog_detail', kwargs={'slug': self.slug})
 
 
+class ProjectImage(models.Model):
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, related_name='gallery_images')
+    image = CloudinaryField('image', folder='project_gallery/')
+    caption = models.CharField(max_length=200, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Image for {self.project.title} ({self.id})"
+
+
 class Project(models.Model):
     """Model for portfolio projects"""
     title = models.CharField(max_length=200, help_text="Project name")
     description = models.TextField(help_text="Brief description of the project")
     detailed_description = RichTextUploadingField(blank=True, 
                                                   help_text="Detailed project description (optional)")
-    # CORRECTED: Using 'folder' is the standard way to specify a directory for CloudinaryField
     image = CloudinaryField('image', folder='project_images/', blank=True, null=True,
                             help_text="Project screenshot or image")
     live_url = models.URLField(blank=True, help_text="Live demo URL (optional)")

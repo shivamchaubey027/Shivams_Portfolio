@@ -30,10 +30,15 @@
             </div>
         </header>
 
-        <!-- Project Main Image -->
-        {% if project.image %}
-        <div class="article-image">
-            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-main-img">
+        <!-- Project Gallery Images -->
+        {% if project.gallery_images.all %}
+        <div class="project-gallery">
+            {% for img in project.gallery_images.all %}
+                <div class="gallery-image-wrapper">
+                    <img src="{{ img.image.url }}" alt="{{ img.caption|default:project.title }}" class="gallery-img" style="max-width:100%;height:auto;object-fit:cover;"/>
+                    {% if img.caption %}<div class="gallery-caption">{{ img.caption }}</div>{% endif %}
+                </div>
+            {% endfor %}
         </div>
         {% endif %}
 
