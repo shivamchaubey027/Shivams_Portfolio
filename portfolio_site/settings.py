@@ -166,3 +166,9 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+print('Cloudinary config at runtime:', {
+    'CLOUD_NAME': CLOUDINARY_STORAGE.get('CLOUD_NAME'),
+    'API_KEY': CLOUDINARY_STORAGE.get('API_KEY'),
+    'API_SECRET': CLOUDINARY_STORAGE.get('API_SECRET'),
+})
