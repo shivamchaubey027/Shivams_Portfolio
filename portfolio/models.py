@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils import timezone
+from cloudinary.models import CloudinaryField # <-- IMPORT THIS
 
 
 class BlogPost(models.Model):
@@ -45,7 +46,7 @@ class Project(models.Model):
     description = models.TextField(help_text="Brief description of the project")
     detailed_description = RichTextUploadingField(blank=True, 
                                                  help_text="Detailed project description (optional)")
-    image = models.ImageField(upload_to='project_images/', blank=True, null=True,
+    image = CloudinaryField(upload_to='project_images/', blank=True, null=True,
                              help_text="Project screenshot or image")
     live_url = models.URLField(blank=True, help_text="Live demo URL (optional)")
     github_url = models.URLField(blank=True, help_text="GitHub repository URL (optional)")
