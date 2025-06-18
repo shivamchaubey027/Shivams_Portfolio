@@ -170,3 +170,12 @@ def create_superuser_view(request):
         return HttpResponse(f"Superuser '{username}' created successfully!")
     else:
         return HttpResponse(f"Superuser '{username}' already exists.")
+
+def project_detail(request, pk):
+    """Project detail page with full description and images"""
+    project = get_object_or_404(Project, pk=pk)
+    context = {
+        'site_settings': get_site_settings(),
+        'project': project,
+    }
+    return render(request, 'portfolio/project_detail.html', context)

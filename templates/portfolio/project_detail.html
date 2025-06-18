@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} - {{ site_settings.site_title }}{% endblock %}
+{% block meta_description %}{{ project.description }}{% endblock %}
+
+{% block content %}
+<article class="blog-post project-detail-page">
+    <div class="container">
+        <!-- Project Header -->
+        <header class="article-header">
+            <div class="article-breadcrumb">
+                <a href="{% url 'projects' %}">Projects</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>{{ project.title }}</span>
+            </div>
+            <h1 class="article-title">{{ project.title }}</h1>
+            <div class="article-meta">
+                <div class="meta-info">
+                    <span class="meta-author">By {{ site_settings.author_name }}</span>
+                    <span class="meta-separator">|</span>
+                    <span class="meta-tech">{{ project.tech_stack }}</span>
+                    {% if project.created_at %}
+                        <span class="meta-separator">|</span>
+                        <time datetime="{{ project.created_at|date:'Y-m-d' }}" class="meta-date">
+                            Added on {{ project.created_at|date:'F j, Y' }}
+                        </time>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <!-- Project Main Image -->
+        {% if project.image %}
+        <div class="article-image">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-main-img">
+        </div>
+        {% endif %}
+
+        <!-- Project Content -->
+        <div class="article-content">
+            {{ project.detailed_description|safe }}
+        </div>
+
+        <!-- Project Footer -->
+        <footer class="article-footer">
+            <div class="article-actions">
+                {% if project.live_url %}
+                    <a href="{{ project.live_url }}" target="_blank" class="btn btn-primary">Live Demo</a>
+                {% endif %}
+                {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">GitHub</a>
+                {% endif %}
+                <a href="{% url 'projects' %}" class="btn btn-outline">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"/>
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+        </footer>
+    </div>
+</article>
+{% endblock %}

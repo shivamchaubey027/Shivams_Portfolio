@@ -6,6 +6,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from decouple import config
+import cloudinary
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -167,8 +168,8 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-print('Cloudinary config at runtime:', {
-    'CLOUD_NAME': CLOUDINARY_STORAGE.get('CLOUD_NAME'),
-    'API_KEY': CLOUDINARY_STORAGE.get('API_KEY'),
-    'API_SECRET': CLOUDINARY_STORAGE.get('API_SECRET'),
-})
+cloudinary.config(
+    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+    api_key=config('CLOUDINARY_API_KEY'),
+    api_secret=config('CLOUDINARY_API_SECRET'),
+)
