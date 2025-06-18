@@ -1,27 +1,29 @@
+import os
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils import timezone
-from cloudinary.models import CloudinaryField # <-- IMPORT THIS
+from cloudinary.models import CloudinaryField
 
 
 class BlogPost(models.Model):
     """Model for blog posts with rich text content"""
+    # ... this model is fine as it doesn't have file uploads ...
     title = models.CharField(max_length=200, help_text="The title of your blog post")
     slug = models.SlugField(max_length=200, unique=True, blank=True, 
-                           help_text="URL-friendly version of the title (auto-generated)")
+                            help_text="URL-friendly version of the title (auto-generated)")
     excerpt = models.TextField(max_length=300, 
-                              help_text="Brief description shown on blog listing page")
+                               help_text="Brief description shown on blog listing page")
     content = RichTextUploadingField(help_text="Full blog post content with rich text editor")
     is_featured = models.BooleanField(default=False, 
-                                     help_text="Show on homepage featured section")
+                                      help_text="Show on homepage featured section")
     is_published = models.BooleanField(default=True, 
-                                      help_text="Make this post visible to visitors")
+                                       help_text="Make this post visible to visitors")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(default=timezone.now, 
-                                       help_text="When this post should be published")
+                                        help_text="When this post should be published")
 
     class Meta:
         ordering = ['-published_at']
@@ -45,19 +47,20 @@ class Project(models.Model):
     title = models.CharField(max_length=200, help_text="Project name")
     description = models.TextField(help_text="Brief description of the project")
     detailed_description = RichTextUploadingField(blank=True, 
-                                                 help_text="Detailed project description (optional)")
-    image = CloudinaryField(upload_to='project_images/', blank=True, null=True,
-                             help_text="Project screenshot or image")
+                                                  help_text="Detailed project description (optional)")
+    # CORRECTED: Using 'folder' is the standard way to specify a directory for CloudinaryField
+    image = CloudinaryField('image', folder='project_images/', blank=True, null=True,
+                            help_text="Project screenshot or image")
     live_url = models.URLField(blank=True, help_text="Live demo URL (optional)")
     github_url = models.URLField(blank=True, help_text="GitHub repository URL (optional)")
     tech_stack = models.CharField(max_length=300, 
-                                 help_text="Technologies used (comma-separated)")
+                                  help_text="Technologies used (comma-separated)")
     is_featured = models.BooleanField(default=False, 
-                                     help_text="Show on homepage featured section")
+                                      help_text="Show on homepage featured section")
     is_active = models.BooleanField(default=True, 
-                                   help_text="Display this project on the website")
+                                    help_text="Display this project on the website")
     order = models.PositiveIntegerField(default=0, 
-                                       help_text="Display order (lower numbers first)")
+                                        help_text="Display order (lower numbers first)")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -78,10 +81,11 @@ class Project(models.Model):
 class Resume(models.Model):
     """Model for resume file management"""
     title = models.CharField(max_length=100, default="My Resume")
-    file = models.FileField(upload_to='resumes/', 
+    # CORRECTED: Changed FileField to CloudinaryField for PDF/raw file uploads
+    file = CloudinaryField('resume', folder='resumes/', resource_type='raw',
                            help_text="Upload your resume as PDF")
     is_active = models.BooleanField(default=True, 
-                                   help_text="Make this resume available for download")
+                                    help_text="Make this resume available for download")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -100,12 +104,13 @@ class SiteSettings(models.Model):
     hero_title = models.CharField(max_length=100, default="Hi, I am Shivam", help_text="Main hero section title")
     author_name = models.CharField(max_length=100, default="Shivam Chaubey", help_text="Author name for blog posts")
     tagline = models.CharField(max_length=200, 
-                              default="Software Developer & Creative Technologist")
+                               default="Software Developer & Creative Technologist")
     bio_short = models.TextField(max_length=500, 
-                                help_text="Brief bio for homepage hero section")
+                                 help_text="Brief bio for homepage hero section")
     bio_long = RichTextUploadingField(help_text="Detailed bio for about page")
-    profile_image = models.ImageField(upload_to='profile/', blank=True, null=True,
-                                     help_text="Professional headshot")
+    # CORRECTED: Changed ImageField to CloudinaryField for image uploads
+    profile_image = CloudinaryField('profile_image', folder='profile/', blank=True, null=True,
+                                    help_text="Professional headshot")
     
     # Contact Information
     email = models.EmailField(help_text="Professional email address")
@@ -115,7 +120,7 @@ class SiteSettings(models.Model):
     
     # SEO
     meta_description = models.TextField(max_length=160, blank=True,
-                                       help_text="Site description for search engines")
+                                        help_text="Site description for search engines")
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
