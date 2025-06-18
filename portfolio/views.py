@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -153,17 +153,11 @@ def contact(request):
 
 
 def download_resume(request):
-    """Handle resume download"""
-    try:
-        resume = Resume.objects.filter(is_active=True).first()
-        if not resume or not resume.file:
-            raise Http404("Resume not found")
-        
-        response = HttpResponse(resume.file.read(), content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{resume.title}.pdf"'
-        return response
-    except Resume.DoesNotExist:
+    """Redirect to the resume file URL (Cloudinary or local)"""
+    resume = Resume.objects.filter(is_active=True).first()
+    if not resume or not resume.file:
         raise Http404("Resume not found")
+    return redirect(resume.file.url)
 
 
 def create_superuser_view(request):
