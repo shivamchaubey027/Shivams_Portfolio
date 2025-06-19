@@ -31,7 +31,7 @@
                 <a href="{% url 'blog_list' %}" class="nav-link">Blog</a>
                 <a href="{% url 'about' %}" class="nav-link">About</a>
                 <a href="{% url 'contact' %}" class="nav-link">Contact</a>
-                <a href="{% url 'download_resume' %}" class="nav-link resume-btn">Download Resume</a>
+                <a href="{{ resume.file.url }}" download="Shivam_Chaubey_Resume.pdf">Download Resume</a>
             </div>
             
             <div class="nav-toggle" id="nav-toggle">
