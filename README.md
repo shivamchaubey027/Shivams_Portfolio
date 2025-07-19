@@ -2,7 +2,7 @@
 
 A clean, professional portfolio website inspired by The New York Times design aesthetic, built with Django.
 
-## Features
+#### Features
 
 - **Clean NYT-inspired Design**: Professional typography using Lora (serif) and Inter (sans-serif) fonts
 - **Secret Admin Panel**: Content management system at `/admin` for blogs, projects, and site settings
