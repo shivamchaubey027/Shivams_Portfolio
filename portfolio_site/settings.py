@@ -173,3 +173,8 @@ cloudinary.config(
     api_key=config('CLOUDINARY_API_KEY'),
     api_secret=config('CLOUDINARY_API_SECRET'),
 )
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
