@@ -7,3 +7,8 @@ django-ckeditor
 gunicorn
 whitenoise
 python-decouple
+psycopg2-binary
+
+
+
+
