@@ -1,6 +1,5 @@
 Django>=4.2
 dj-database-url
-python-decouple
 cloudinary
 django-cloudinary-storage
 django-ckeditor
@@ -12,3 +11,6 @@ psycopg2-binary
 
 
 
+￼
+￼
+￼
