@@ -23,12 +23,14 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '.onrender.com']
     CSRF_TRUSTED_ORIGINS = [f"https://{RENDER_EXTERNAL_HOSTNAME}", f"https://*.onrender.com"]
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
     # CSRF trusted origins for Replit (keep for dev)
     CSRF_TRUSTED_ORIGINS = [
         'https://*.replit.dev',
         'https://*.repl.co',
         'https://*.replit.app',
+        'http://localhost:8000', # Added for local development
+        'http://127.0.0.1:8000', # Added for local development
     ]
 
 # Application definition
