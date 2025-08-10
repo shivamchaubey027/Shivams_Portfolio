@@ -11,3 +11,12 @@ A clean, professional portfolio website inspired by The New York Times design ae
 - **Project Showcase**: Featured projects with images, descriptions, and technology tags
 - **Blog System**: Full-featured blog with search, pagination, and rich content
 - **Resume Download**: Integrated resume management and download functionality
+
+
+ 1. To Start the Container:
+
+   docker run -d -p 8000:8000 -v $(pwd):/app --env-file .env shivams_portfolio gunicorn portfolio_site.wsgi:application --bind 0.0.0.0:8000 --reload
+
+  2. To Stop the Container:
+
+   1 docker stop $(docker ps -a -q)
