@@ -26,6 +26,7 @@ if RENDER_EXTERNAL_HOSTNAME:
         f"https://*.onrender.com",
         "https://shivamchaubey.live",
         "https://www.shivamchaubey.live"
+        
     ]
 else:
     ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
