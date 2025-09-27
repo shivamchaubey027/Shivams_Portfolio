@@ -20,19 +20,19 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # Render provides RENDER_EXTERNAL_HOSTNAME env var
 RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '.onrender.com']
-    CSRF_TRUSTED_ORIGINS = [f"https://{RENDER_EXTERNAL_HOSTNAME}", f"https://*.onrender.com"]
+    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '.onrender.com', 'shivamchaubey.live']
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{RENDER_EXTERNAL_HOSTNAME}", 
+        f"https://*.onrender.com",
+        "https://shivamchaubey.live",
+        "https://www.shivamchaubey.live"
+    ]
 else:
     ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
-    # CSRF trusted origins for Replit (keep for dev)
     CSRF_TRUSTED_ORIGINS = [
-        'https://*.replit.dev',
-        'https://*.repl.co',
-        'https://*.replit.app',
-        'http://localhost:8000', # Added for local development
-        'http://127.0.0.1:8000', # Added for local development
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
     ]
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',  
+
+    'django_prometheus', # Added for Prometheus metrics
 
     'cloudinary_storage',
     'cloudinary',
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware', # Added for Prometheus metrics
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware', # Added for Prometheus metrics
 ]
 
 ROOT_URLCONF = 'portfolio_site.urls'
