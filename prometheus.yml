@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s # How frequently to scrape targets
+
+scrape_configs:
+  - job_name: 'django_app'
+    static_configs:
+      - targets: ['app:8000'] # 'app' is the service name in docker-compose.yml

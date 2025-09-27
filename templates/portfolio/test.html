@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">logo</div>
+        <nav class="nav">
+            <span>Home</span>
+            <span>About</span>
+            <span>Project</span>
+            <span>Contact</span>
+        </nav>
+        <a href="#" class="download-btn">Download Resume</a>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+        <!-- Left Column - Projects -->
+        <div class="projects-column">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Project 1</h3>
+                    <p>some desc</p>
+                </div>
+                <div class="project-image">image</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Project 2</h3>
+                    <p>some desc</p>
+                </div>
+                <div class="project-image">image</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Project 2</h3>
+                    <p>some desc</p>
+                </div>
+                <div class="project-image">image</div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Hi, I am shivam Chaubey</h1>
+                    <div class="subtitle">blah blah blah</div>
+                    <div class="description">Some blah blah about me</div>
+                </div>
+                <div class="avatar">Some avatar</div>
+            </div>
+
+            <!-- Bottom Grid -->
+            <div class="bottom-grid">
+                <div class="bottom-card">
+                    <div class="connect-card">
+                        <h3>Connect on</h3>
+                        <p>github<br>linkedin<br>shit</p>
+                    </div>
+                    <div class="availability">Available in Mumbai</div>
+                </div>
+
+                <div class="bottom-card tech-card">
+                    <div>
+                        <div class="tech-globe"></div>
+                        <div class="tech-text">The floating globe of icons of technologies i know</div>
+                    </div>
+                </div>
+
+                <div class="bottom-card writings-card">
+                    <h3>Latest Writings</h3>
+                    <div class="blog-title">How i got a new ec2 instance</div>
+                    <div class="blog-desc">some basic desc</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

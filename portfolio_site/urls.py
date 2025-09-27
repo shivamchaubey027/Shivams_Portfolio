@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('metrics/', include('django_prometheus.urls')), # Added for Prometheus metrics
     path('', include('portfolio.urls')),
 ]
 
