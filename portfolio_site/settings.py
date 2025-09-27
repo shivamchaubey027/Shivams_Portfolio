@@ -25,7 +25,8 @@ if RENDER_EXTERNAL_HOSTNAME:
         f"https://{RENDER_EXTERNAL_HOSTNAME}", 
         f"https://*.onrender.com",
         "https://shivamchaubey.live",
-        "https://www.shivamchaubey.live"
+        "https://www.shivamchaubey.live",
+        "http://www.shivamchaubey.live"
         
     ]
 else:
