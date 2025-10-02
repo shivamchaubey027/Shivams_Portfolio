@@ -20,7 +20,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # Render provides RENDER_EXTERNAL_HOSTNAME env var
 RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '.onrender.com', 'shivamchaubey.live']
+    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '.onrender.com','shivamchaubey.live', 'www.shivamchaubey.live', 'shivamchaubey.onrender.com']
+
     CSRF_TRUSTED_ORIGINS = [
         f"https://{RENDER_EXTERNAL_HOSTNAME}", 
         f"https://*.onrender.com",
