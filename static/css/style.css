@@ -589,7 +589,9 @@ blockquote {
 .related-posts {
     padding: 3rem 0;
     background-color: #2C4A44;
+    
 }
+
 
 .related-title {
     text-align: center;
@@ -877,13 +879,14 @@ blockquote {
 
 .about-skills {
     padding: 4rem 0;
-    background-color: #F8F9FA;
+    background-color: #FAF8F1;
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
+
 }
 
 .skill-category h3 {
