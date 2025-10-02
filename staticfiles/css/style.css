@@ -1,3 +1,17 @@
+/* Garamond font faces (make sure you have these font files in your static/fonts directory) */
+@font-face {
+    font-family: 'Garamond Bold';
+    src: url('/static/fonts/Garamond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Garamond Narrow';
+    src: url('/static/fonts/Garamond-Narrow.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -11,19 +25,19 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Garamond Narrow', Garamond, 'Times New Roman', Times, serif;
     font-weight: 400;
     line-height: 1.6;
     color: #121212;
-    background-color: #FDFDFD;
+    background-color: #2b2b2b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography - NYT Inspired */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', 'Times New Roman', serif;
-    font-weight: 600;
+    font-family: 'Garamond Bold', Garamond, 'Times New Roman', Times, serif;
+    font-weight: bold;
     line-height: 1.3;
     margin-bottom: 1rem;
     color: #121212;
@@ -54,7 +68,9 @@ h6 {
     font-size: 1rem;
 }
 
-p {
+p, li, span, a, td, th {
+    font-family: 'Garamond Narrow', Garamond, 'Times New Roman', Times, serif;
+    font-weight: normal;
     margin-bottom: 1rem;
     line-height: 1.7;
 }
@@ -132,9 +148,9 @@ blockquote {
 }
 
 .nav-brand {
-    font-family: 'Lora', serif;
+    font-family: 'Garamond Bold', Garamond, serif;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: bold;
     color: #121212;
     text-decoration: none;
 }

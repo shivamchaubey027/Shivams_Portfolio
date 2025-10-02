@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -15,15 +17,15 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: #121212;
-    background-color: #FDFDFD;
+    background-color: #FAF8F1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography - NYT Inspired */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', 'Times New Roman', serif;
-    font-weight: 600;
+    font-family: 'Playfair Display', serif; /* The new elegant font */
+    font-weight: 700;
     line-height: 1.3;
     margin-bottom: 1rem;
     color: #121212;
@@ -113,12 +115,14 @@ blockquote {
 
 /* Navigation */
 .navbar {
-    background-color: #FDFDFD;
+    /* Make background semi-transparent to reveal the blur effect */
+    background-color: rgba(250, 248, 241, 0.85);
     border-bottom: 1px solid #EAEAEA;
     position: sticky;
     top: 0;
     z-index: 100;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
 }
 
 .nav-container {
@@ -152,6 +156,8 @@ blockquote {
 
 .nav-link {
     color: #121212;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
     font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
@@ -167,12 +173,12 @@ blockquote {
     border: 2px solid #121212;
     padding: 0.5rem 1rem;
     border-radius: 4px;
-    color: #121212;
+    color: #2C4A44;
     font-weight: 600;
 }
 
 .nav-link.resume-btn:hover {
-    background-color: #121212;
+    background-color: #2C4A44;
     color: white;
 }
 
@@ -207,24 +213,24 @@ blockquote {
 }
 
 .btn-primary {
-    background-color: #121212;
+    background-color: #2C4A44; /* Dark Teal Accent */
     color: white;
 }
-
 .btn-primary:hover {
-    background-color: #333;
+    background-color: #1A3831; /* A slightly darker teal for hover */
     color: white;
     text-decoration: none;
 }
 
+
 .btn-secondary {
     background-color: transparent;
-    color: #121212;
-    border: 2px solid #121212;
+    color: #2C4A44; /* Dark Teal Accent */
+    border: 2px solid #2C4A44; /* Dark Teal Accent */
 }
 
 .btn-secondary:hover {
-    background-color: #121212;
+    background-color: #2C4A44; /* Dark Teal Accent */
     color: white;
     text-decoration: none;
 }
@@ -248,11 +254,13 @@ blockquote {
 
 /* Hero Section */
 .hero {
-    padding: 4rem 0 6rem;
+    background-color: #FAF8F1; /* Use our solid elegant background */
     min-height: 100vh;
-    background: linear-gradient(135deg, #FDFDFD 0%, #F8F9FA 100%);
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    padding: 0 1rem; /* Add some side padding for small screens */
 }
-
 .hero-content {
     text-align: center;
     max-width: 800px;
@@ -260,18 +268,21 @@ blockquote {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 5rem; /* Much larger */
+    margin-bottom: 1.5rem;
     font-weight: 700;
+    letter-spacing: -2px; /* A designer touch for large headlines */
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color: #666;
+    font-family: 'Inter', sans-serif; /* Use the clean body font */
+    font-size: 1rem;
+    color: #555;
     margin-bottom: 2rem;
-    font-weight: 400;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em; /* Adds breathing room */
 }
-
 .hero-description {
     font-size: 1.125rem;
     line-height: 1.8;
@@ -307,8 +318,11 @@ blockquote {
 /* Sections */
 .section-title {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2rem;
+    margin-bottom: 4rem; /* More space after the title */
+    font-size: 2.5rem; /* A bit larger */
+    font-weight: 700;
+    text-transform: uppercase; /* Classic design move */
+     /* Wideset for style */
 }
 
 .section-footer {
@@ -318,8 +332,8 @@ blockquote {
 
 /* Featured Projects */
 .featured-projects {
-    padding: 5rem 0;
-    background-color: #F8F9FA;
+    padding: 8rem 0; /* More vertical space */
+    background-color: transparent; /* Let it sit on the main background */
 }
 
 .projects-grid {
@@ -331,16 +345,16 @@ blockquote {
 }
 
 .project-card {
-    background: white;
+    background: #2C4A44;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #EAEAEA; /* A subtle border */
+    transition: transform 0.2s ease, border-color 0.2s ease; /* Animate the border color */
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #D3D3D3; /* A slightly darker border on hover */
 }
 
 .project-image {
@@ -400,12 +414,14 @@ blockquote {
 }
 
 .project-title {
+     color: #F8F9FA;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
+
 }
 
 .project-description {
-    color: #666;
+    color: #F8F9FA;
     margin-bottom: 1rem;
     line-height: 1.6;
 }
@@ -427,6 +443,7 @@ blockquote {
 }
 
 .project-links {
+     color: #F8F9FA;
     display: flex;
     gap: 1rem;
 }
@@ -435,13 +452,13 @@ blockquote {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: #121212;
+     color: #edeef0;
     font-weight: 500;
     font-size: 0.875rem;
 }
 
 .project-link:hover {
-    color: #333;
+     color: #ecdef3;
 }
 
 /* Blog Sections */
@@ -571,11 +588,12 @@ blockquote {
 /* Related Posts */
 .related-posts {
     padding: 3rem 0;
-    background-color: #F8F9FA;
+    background-color: #2C4A44;
 }
 
 .related-title {
     text-align: center;
+    color: #FAF8F1;
     margin-bottom: 2rem;
 }
 
@@ -588,7 +606,7 @@ blockquote {
 }
 
 .related-item {
-    background: white;
+    background: #FAF8F1;
     padding: 1.5rem;
     border-radius: 8px;
 }
@@ -983,18 +1001,19 @@ blockquote {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #EAEAEA;
-    border-radius: 4px;
+    padding: 1rem; /* More padding */
+    border: 1px solid #EAEAEA;
+    border-radius: 0; /* Sharp corners */
     font-size: 1rem;
     font-family: inherit;
     transition: border-color 0.2s ease;
+    background-color: #FDFDFD; /* A slightly whiter background */
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #121212;
+    border-color: #2C4A44; /* Use your accent color for focus */
 }
 
 .form-group textarea {
@@ -1138,6 +1157,29 @@ blockquote {
         flex-direction: column;
         text-align: center;
     }
+
+    .article-content {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Makes code blocks readable and prevents horizontal scrolling */
+.article-content pre {
+    background-color: #F8F8F8; /* A very light grey, softer than pure white */
+    border: 1px solid #EAEAEA;  /* A subtle, light border */
+    border-radius: 8px;        /* Rounded corners for a modern look */
+    padding: 1.5rem;           /* More generous padding inside the block */
+    margin: 2rem 0;            /* More vertical space around the block */
+    overflow-x: auto;          /* Enables horizontal scroll for very long lines on desktop */
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace; /* A more modern coding font */
+    font-size: 0.95rem;        /* Slightly larger font for readability */
+    line-height: 1.5;          /* Good line height */
+    color: #333;               /* Softer text color than pure black */
+
+    /* For mobile responsiveness (already covered, but ensure it's here) */
+    white-space: pre-wrap;     /* Allows long lines to wrap */
+    word-break: break-all;     /* Breaks long words/strings */
+}
 }
 
 @media (max-width: 480px) {
@@ -1177,6 +1219,19 @@ blockquote {
         font-size: 0.75rem;
         padding: 0.375rem 0.75rem;
     }
+
+    .article-content {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Makes code blocks readable and prevents horizontal scrolling */
+.article-content pre {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    white-space: pre-wrap;       /* Allows long lines of code to wrap */
+    word-break: break-all;   /* Forces long strings (like URLs) to wrap */
+}
 }
 
 /* Print Styles */
@@ -1205,4 +1260,78 @@ blockquote {
         color: #000;
         text-decoration: underline;
     }
+}
+
+/* --- New Hero Section Styles --- */
+
+/* 1. The Keyframe Animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. The Main Hero Container (Flexbox Layout) */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem; /* Space between text and graphic */
+  min-height: 90vh;
+  width: 100%;
+  max-width: 1200px; /* Aligns with your .container class */
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* 3. The Containers for Text and Graphic */
+.hero-text {
+  flex: 1; /* Allows text block to take up available space */
+  max-width: 600px;
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+.hero-content {
+    /* This class from your old code is no longer needed for layout */
+    text-align: left;
+}
+
+.hero-graphic-container {
+  flex-shrink: 0; /* Prevents the graphic from shrinking */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 4. The Rotating Graphic Itself */
+.rotating-wheel {
+  max-width: 400px;
+  width: 100%;
+  animation: rotate 45s linear infinite; /* Adjust 45s to make it faster or slower */
+}
+
+/* 5. Responsiveness for Mobile */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* Stacks the items vertically */
+    min-height: auto;
+    justify-content: center;
+    padding: 4rem 1rem;
+    gap: 4rem;
+  }
+
+  .hero-text {
+    text-align: center; /* Center the text for mobile view */
+  }
+
+  .hero-actions {
+    justify-content: center; /* Center the buttons */
+  }
+
+  .rotating-wheel {
+    max-width: 300px; /* Make the wheel smaller on mobile */
+  }
 }
