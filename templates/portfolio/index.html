@@ -6,15 +6,17 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
-    <div class="hero-text">
-        <h1 class="hero-title">{{ site_settings.hero_title }}</h1>
-        <p class="hero-subtitle">{{ site_settings.tagline }}</p>
-        <div class="hero-description">
-            <p>{{ site_settings.bio_short }}</p>
-        </div>
-        <div class="hero-actions">
-            <a href="{% url 'projects' %}" class="btn btn-primary">View my work</a>
-            <a href="{% url 'contact' %}" class="btn btn-secondary">Get in Touch</a>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ site_settings.hero_title }}</h1>
+            <p class="hero-subtitle">{{ site_settings.tagline }}</p>
+            <div class="hero-description">
+                <p>{{ site_settings.bio_short }}</p>
+            </div>
+            <div class="hero-actions">
+                <a href="{% url 'projects' %}" class="btn btn-primary">View My Work</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">Get in Touch</a>
+            </div>
         </div>
     </div>
     
