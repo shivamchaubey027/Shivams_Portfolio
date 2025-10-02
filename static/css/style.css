@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -1164,22 +1164,17 @@ blockquote {
 }
 
 /* Makes code blocks readable and prevents horizontal scrolling */
-.article-content pre {
-    background-color: #F8F8F8; /* A very light grey, softer than pure white */
-    border: 1px solid #EAEAEA;  /* A subtle, light border */
-    border-radius: 8px;        /* Rounded corners for a modern look */
-    padding: 1.5rem;           /* More generous padding inside the block */
-    margin: 2rem 0;            /* More vertical space around the block */
-    overflow-x: auto;          /* Enables horizontal scroll for very long lines on desktop */
-    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace; /* A more modern coding font */
-    font-size: 0.95rem;        /* Slightly larger font for readability */
-    line-height: 1.5;          /* Good line height */
-    color: #333;               /* Softer text color than pure black */
-
-    /* For mobile responsiveness (already covered, but ensure it's here) */
-    white-space: pre-wrap;     /* Allows long lines to wrap */
-    word-break: break-all;     /* Breaks long words/strings */
-}
+.article-content {
+      font-size: 1rem;
+      line-height: 1.7;
+  }
+  .article-content pre {
+      font-size: 0.9rem; /* Slightly smaller font for mobile pre blocks */
+      padding: 1rem;     /* Reduce padding slightly for mobile */
+      white-space: pre-wrap;     /* Crucial: Allows long lines of code to wrap */
+      word-break: break-word;    /* Forces long words (like URLs) to wrap */
+      overflow-x: hidden;      /* Prevents horizontal scrolling within the block on mobile */
+  }
 }
 
 @media (max-width: 480px) {
@@ -1334,4 +1329,38 @@ blockquote {
   .rotating-wheel {
     max-width: 300px; /* Make the wheel smaller on mobile */
   }
+}
+
+/* --- Base Code Block Styling (Desktop & Mobile Default) --- */
+
+/* For <pre> tags (blocks of code) */
+.article-content pre {
+    background-color: #F8F8F8; /* A very light grey */
+    border: 1px solid #EAEAEA;  /* Subtle border */
+    border-radius: 8px;        /* Rounded corners */
+    padding: 1.5rem;           /* Generous padding */
+    margin: 2rem 0;            /* Vertical space */
+    overflow-x: auto;          /* Horizontal scroll for very long lines on desktop */
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace; /* Modern coding font */
+    font-size: 0.95rem;        /* Readable font size */
+    line-height: 1.5;          /* Good line height */
+    color: #333;               /* Softer text color */
+}
+
+/* For <code> tags (inline code snippets) */
+.article-content code {
+    background-color: #EFEFEF; /* Slightly darker background for inline */
+    padding: 0.2em 0.4em;      /* Small padding */
+    border-radius: 4px;        /* Softly rounded corners */
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    color: #C04000;           /* Your muted red accent for inline code */
+}
+
+/* Ensure code inside pre blocks doesn't inherit inline code styles */
+.article-content pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
 }
